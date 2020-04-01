@@ -62,6 +62,7 @@ function categoryCosts() {
     .count('name AS items')
     .sum('price as total')
     .select(knexInstance.raw('ROUND(AVG(price), 2) AS average'))
+    .from('shopping_list')
     .groupBy('category')
     .then(result => console.info(result));
 }
